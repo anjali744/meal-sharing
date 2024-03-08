@@ -1,4 +1,7 @@
-require("dotenv").config();
+import knex from "knex";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // create connection
 const knex = require("knex")({
@@ -18,4 +21,4 @@ knex.raw("SELECT VERSION()").then(() => {
   console.log(`connection to db successful!`);
 });
 
-module.exports = knex;
+export default router;
