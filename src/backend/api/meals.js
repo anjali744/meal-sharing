@@ -1,4 +1,5 @@
-const express = require("express");
+import express from "express";
+
 const router = express.Router();
 const knex = require("../database");
 
@@ -12,4 +13,4 @@ router.get("/", async (request, response) => {
   }
 });
 
-module.exports = router;
+export default router;
