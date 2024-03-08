@@ -1,15 +1,14 @@
-const express = require("express");
+import express from "express";
+import path from "path";
+import mealsRouter from "./api/meals.js";
+
 const app = express();
 const router = express.Router();
-const path = require("path");
 
-const mealsRouter = require("./api/meals");
 const buildPath = path.join(__dirname, "../../dist");
-const port = process.env.PORT || 3000;
 const cors = require("cors");
 
-// For week4 no need to look into this!
-// Serve the built client html
+//future you requried this line(Serve the built client html)
 app.use(express.static(buildPath));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
@@ -19,7 +18,7 @@ app.use(express.json());
 
 app.use(cors());
 
-router.use("/meals", mealsRouter);
+app.use("/api/meals", mealsRouter);
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
